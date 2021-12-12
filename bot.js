@@ -1,14 +1,19 @@
 // Require dependencies
-import 'express';
-
 import { Client, Intents, ClientUser } from 'discord.js';
 import { config } from 'dotenv';
+const express = require('express');
+const app = express();
 
 const client = new Client({
     intents:
         [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
-const app = express();
+
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`));
+
 config();
 
 client.on('ready', () => {
