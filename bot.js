@@ -1,13 +1,14 @@
 // Require dependencies
+import 'express';
+
 import { Client, Intents, ClientUser } from 'discord.js';
+import { config } from 'dotenv';
 
 const client = new Client({
     intents:
         [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
-
-import { config } from 'dotenv';
-
+const app = express();
 config();
 
 client.on('ready', () => {
@@ -28,7 +29,7 @@ client.on('ready', message => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+    console.log(`Our app is running on port ${PORT}`);
 });
 
 
